@@ -1,5 +1,15 @@
 import streamlit as st
 import pandas as pd
+st.markdown(
+    """
+    <style>
+    /* Hide Streamlit footer & manage app */
+    footer {visibility: hidden;}
+    div[data-testid="stToolbar"] {visibility: hidden;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 from calorie_logic import (
     calculate_bmr,
@@ -104,3 +114,4 @@ if daily_log and "final_calories" in st.session_state:
 if st.button("🔁 Reset Day"):
     reset_day()
     st.success("New day started! Food log cleared ✅")
+

@@ -1,16 +1,5 @@
 import streamlit as st
 import pandas as pd
-st.markdown(
-    """
-    <style>
-    /* Hide Streamlit footer & manage app */
-    footer {visibility: hidden;}
-    div[data-testid="stToolbar"] {visibility: hidden;}
-    </style>
-    """,
-    unsafe_allow_html=True
-)
-
 from calorie_logic import (
     calculate_bmr,
     calculate_tdee,
@@ -18,13 +7,22 @@ from calorie_logic import (
     calculate_bmi,
     bmi_category
 )
-
 from daily_log import add_food, calculate_totals, daily_log,reset_day
 
 
 # -------------------- PAGE SETUP --------------------
 st.set_page_config(page_title="Indian Diet Tracker", layout="centered")
 st.title("🥗 Indian Diet & Calorie Tracker")
+st.markdown(
+    """
+    <style>
+    footer {display: none !important;}
+    header {display: none !important;}
+    [data-testid="stToolbar"] {display: none !important;}
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 
 # -------------------- LOAD FOOD DATA --------------------
@@ -114,4 +112,5 @@ if daily_log and "final_calories" in st.session_state:
 if st.button("🔁 Reset Day"):
     reset_day()
     st.success("New day started! Food log cleared ✅")
+
 

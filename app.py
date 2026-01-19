@@ -188,10 +188,8 @@ elif st.session_state.page == 2:
             totals = calculate_totals()
             protein_need = 0.8 * st.session_state.weight
             percent_used = (totals["Calories"] / st.session_state.final_calories) * 100
-        st.markdown(
-    f"### 🔥 Total Calories Consumed Today: **{round(totals['Calories'], 2)} kcal**"
+            st.markdown(f"### 🔥 Total Calories Consumed Today: **{round(totals['Calories'], 2)} kcal**"
 )
-
             st.subheader("🍽️ Meal Feedback")
 
             if percent_used < 50:
@@ -212,12 +210,12 @@ elif st.session_state.page == 2:
                 else:
                     st.success("💪 Calories & protein are balanced.")
 
-            st.divider()
-            st.subheader("📋 Today's Food Log")
+        st.divider()
+        st.subheader("📋 Today's Food Log")
 
-            log_df = pd.DataFrame(daily_log)
-            log_df.insert(0, "S.No", range(1, len(log_df) + 1))
-            st.dataframe(log_df, hide_index=True, use_container_width=True)
+        log_df = pd.DataFrame(daily_log)
+        log_df.insert(0, "S.No", range(1, len(log_df) + 1))
+        st.dataframe(log_df, hide_index=True, use_container_width=True)
 
         st.divider()
         col1, col2, col3 = st.columns(3)
@@ -281,4 +279,5 @@ elif st.session_state.page == 3:
     st.caption(
         "Disclaimer: This project is for educational purposes only and is not a medical application."
     )
+
 

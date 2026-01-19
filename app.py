@@ -188,6 +188,9 @@ elif st.session_state.page == 2:
             totals = calculate_totals()
             protein_need = 0.8 * st.session_state.weight
             percent_used = (totals["Calories"] / st.session_state.final_calories) * 100
+        st.markdown(
+    f"### 🔥 Total Calories Consumed Today: **{round(totals['Calories'], 2)} kcal**"
+)
 
             st.subheader("🍽️ Meal Feedback")
 
@@ -278,3 +281,4 @@ elif st.session_state.page == 3:
     st.caption(
         "Disclaimer: This project is for educational purposes only and is not a medical application."
     )
+
